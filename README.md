@@ -296,6 +296,8 @@ output_path = 'your/own/path/to/matugen.css'
 Then, go to `Settings`, add your output_path directory to `Custom Themes Path` and select `matugen.css`.
 
 ### Hyprland
+
+#### Legacy hyprlang config (`.conf`)
 ```toml
 [config]
 # ...
@@ -308,6 +310,23 @@ Then, add this line to the top of your `~/.config/hypr/hyprland.conf` and/or `~/
 
 ```hyprlang
 source = colors.conf
+```
+
+#### Lua config (Hyprland 0.55+)
+```toml
+[config]
+# ...
+[templates.hyprland_lua]
+input_path = 'path/to/template'
+output_path = '~/.config/hypr/colors.lua'
+post_hook = "hyprctl reload"
+# ...
+```
+Then, require it in any Lua config file that needs colors:
+
+```lua
+local colors = require("colors")
+-- colors.primary, colors.secondary, colors.background, etc.
 ```
 
 ### Kitty
